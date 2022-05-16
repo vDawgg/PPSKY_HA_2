@@ -1,12 +1,11 @@
 package com.todo.backend;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@SpringBootApplication
 @EnableMongoRepositories(basePackageClasses = TODORepository.class)
 public class TODOController {
 

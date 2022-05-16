@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+
+  mongo_db:
+    container_name: mongo_db
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - todo-network
+  todo-server:
+    container_name: todo-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: todo-server:latest
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo_db
+    networks:
+      - todo-network
+
+networks:
+  todo-network:
+    driver: bridge
