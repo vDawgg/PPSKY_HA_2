@@ -2,8 +2,11 @@ package com.todo.backend;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @EnableMongoRepositories(basePackageClasses = TODORepository.class)
@@ -14,8 +17,8 @@ public class TODOController {
 
     //Get all todos
     @GetMapping("allTodos")
-    public TODO[] allTodos() {
-        return null;
+    public List<TODO> allTodos() {
+        return repository.findAll(Sort.by(Sort.Direction.ASC, "date"));
     }
 
     //Get specific todos
