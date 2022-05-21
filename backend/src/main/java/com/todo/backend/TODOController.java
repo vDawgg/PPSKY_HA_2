@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @EnableMongoRepositories(basePackageClasses = TODORepository.class)
 public class TODOController {
