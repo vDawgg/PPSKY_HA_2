@@ -14,12 +14,24 @@ services:
     container_name: todo-server
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: backend/Dockerfile
     image: todo-server:latest
     ports:
       - 8080:8080
     depends_on:
       - mongo_db
+    networks:
+      - todo-network
+  todo-site:
+    container_name: todo-site
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    image: todo-site:latest
+    ports:
+      - 6969:80
+    depends_on:
+      - todo-server
     networks:
       - todo-network
 
