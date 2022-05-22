@@ -10,9 +10,11 @@
 
     <title>ToDo App - Bearbeiten</title>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+<script src="script/edit.js"></script>        
 <body class="bg-dark text-white">
 <div class="row">
     <main>
@@ -24,8 +26,8 @@
                 <textarea class="form-control" id="editToDo" maxlength="160" placeholder="Titel"></textarea>
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="deadline"><i class="bi bi-calendar-check"></i></span>
-                <input class="form-control" aria-describedby="deadline" aria-label="Fälligkeitsdatum" type="date"
+                <span class="input-group-text"><i class="bi bi-calendar-check"></i></span>
+                <input id="deadline" class="form-control" aria-describedby="deadline" aria-label="Fälligkeitsdatum" type="date"
                        value="2022-05-09">
             </div>
             <div class="input-group mb-3">

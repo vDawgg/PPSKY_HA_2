@@ -1,3 +1,19 @@
+function deleteToDo(element) {
+    const id = element.getAttribute("data-id");
+    $.ajax({
+        url: `http://localhost:8080/delete?id=${id}`,
+        type: "GET",
+        crossDomain: true,
+        success: function (response){
+            console.log(response);
+            location.reload();
+        },
+        error: function (xhr, status){
+            console.log("Error: "+xhr.status)
+        }
+    })
+}
+
 $(document).ready(function () {
   $.ajax({
       url: "http://localhost:8080/allTodos",
@@ -44,31 +60,38 @@ function addTodos(r) {
                     .attr('role', 'group')
                     .append($('<a>')
                         .attr('class', 'btn btn-primary')
-                        .attr('href', 'edit.html')
+                        .attr('href', `edit.html?id=${r.id}`)
+                        .attr('data-id', `${r.id}`)
                         .append($('<i>')
                             .attr('class', 'bi bi-pen')
                         )
                     )
-                    .append($('<a>')
+                    .append($('<a onclick=deleteToDo(this)>')
                         .attr('class', 'btn btn-danger')
+                        .attr('data-id', `${r.id}`)
                         //TODO: Add functionality for deleting the todo
                         .append($('<i>')
                             .attr('class', 'bi bi-trash')
                         )
                     )
                 )
+
+                // BIG SCREENS
+                
                 .append($('<div>')
                     .attr('class', 'btn-group d-none d-sm-inline-flex')
                     .attr('role', 'group')
                     .append($('<a>')
                         .attr('class', 'btn btn-primary')
-                        .attr('href', 'edit.html')
+                        .attr('href', `edit.html?id=${r.id}`)
+                        .attr('data-id', `${r.id}`)
                         .append($('<i>')
                             .attr('class', 'bi bi-pen')
                         )
                     )
-                    .append($('<a>')
+                    .append($('<a onclick=deleteToDo(this)>')
                         .attr('class', 'btn btn-danger')
+                        .attr('data-id', `${r.id}`)
                         //TODO: Add functionality for deleting the todo
                         .append($('<i>')
                             .attr('class', 'bi bi-trash')
