@@ -25,6 +25,7 @@ $('document').ready(function (){
             contentType: 'application/json',
             success: function (response) {
                 console.log("Response: " + response);
+                alert("Successfully created!")
             },
             error: function (xhr, textStatus, err) {
                 console.log(xhr.status + ";" + xhr.statusText)
